@@ -16,11 +16,13 @@ h2,
 h3,
 h4,
 p {
+  font-family: 'Montserrat', sans-serif;
   margin: 0px;
 }
 
 ul,
 li {
+  font-family: 'Montserrat', sans-serif;
   list-style: none;
   padding: 0px;
   margin: 0px;
@@ -35,7 +37,7 @@ button,
 input {
   display: block;
   font-size: 1rem;
-  font-family: var(--type-first);
+  font-family: 'Montserrat', sans-serif;
   color: #032336, 100%;
 }
 
@@ -55,12 +57,17 @@ a {
   margin-top: 2rem;
 }
 
+.content-container{
+  width: 94%;
+  margin: 0 auto;
+}
+
 .title {
   line-height: 1;
-  font-size: 19px;
+  font-size: 1.18rem;
   font-weight: bold;
   color: #032336; 
-  margin: 1.5rem 1rem 0 1rem;
+  margin-top: 1.5rem;
   position: relative;
   z-index: 1;
 }
@@ -81,8 +88,7 @@ a {
 .App {
   display: flex;
   flex-direction: column;
-  min-height: calc(100vh + 10rem);
-  
+  min-height: 100vh;
 }
 
 .AppBody {
@@ -90,8 +96,8 @@ a {
 }
 
 .btn{
-  width: 45%;
-  padding: 2.3% 5% !important;
+  width: 38%;
+  padding: 8px 0px !important;
   border-radius: 21px !important;
   margin: 1rem auto;
   background-color:#FC9543 !important;

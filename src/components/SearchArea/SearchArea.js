@@ -6,17 +6,22 @@ import './SearchArea.scss'
 
 const SearchArea = () => {
     return (
+        <>
         <section className="search-area">
-            <h2 className="title">Find the perfect property for you!</h2>            
+            <div className="content-container">
+                <h2 className="title">Find the perfect property!</h2>            
+            </div>
             <div className="search-box">
                 <Houses />
                 <Form inline>
                     <Logo />
-                    <FormControl type="text" placeholder="Search by city or district" className="mr-sm-2 px-5" />
+                    <FormControl type="text" placeholder="Search by City or District" className="mr-sm-2 px-5" />
                     <Button className="btn" variant="primary">Search</Button>
                 </Form>
             </div>
         </section>
+        <div className="search-separator"></div>
+        </>
     )
 }
 
