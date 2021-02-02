@@ -19,8 +19,9 @@ const SearchArea = () => {
                     <Button className="btn" variant="primary">Search</Button>
                 </Form>
             </div>
+            <div className="search-separator"></div>
         </section>
-        <div className="search-separator"></div>
+        
         </>
     )
 }

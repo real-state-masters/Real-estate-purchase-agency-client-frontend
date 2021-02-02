@@ -3,7 +3,7 @@ import './MixTitle.scss'
 
 const MixTitle = ({bold, light}) => {
     return (
-        <div className="content-container">
+        <div className="mixtitle-container">
             <h1> <span className="text bold-text">{bold}</span> <span className="text light-text">{light}</span></h1>
         </div>
     )

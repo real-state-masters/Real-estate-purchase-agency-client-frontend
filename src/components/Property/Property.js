@@ -75,11 +75,11 @@ import {ReactComponent as Camera} from '../../assets/camera.svg'
                         current < house.imgs.length - 1 && <RightArrow onClick={() => setCurrent(current = current + 1)}/>
                     }
                 </div>
-                <div class="camera-container">
+                <div className="camera-container">
                     <Camera />
                     <span>{current + 1}/{house.imgs.length}</span>
                 </div>
-                <img class="img" src={photo} alt=""/>
+                <img className="img" src={photo} alt=""/>
             </div>
             <div className="address">
                 <h3>{house.address}</h3>

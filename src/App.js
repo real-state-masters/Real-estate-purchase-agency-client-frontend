@@ -1,14 +1,15 @@
-import Header from "./components/Header/Header";
-import SearchArea from "./components/SearchArea/SearchArea";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from "./pages/Home";
+import SearchResult from './pages/SearchResult';
 
 function App() {
   return (
-    <div className="App">
-      <div className="container">
-          <Home />
-      </div>
-    </div>
+      <BrowserRouter>  
+      <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="properties/:location/*" element={<SearchResult />} />            
+        </Routes>   
+      </BrowserRouter>
   );
 }
 
