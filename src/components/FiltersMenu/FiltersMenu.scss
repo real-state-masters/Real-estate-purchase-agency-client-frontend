@@ -60,13 +60,27 @@
 .hideMenu{
     opacity: 0;
     pointer-events: none;
-    z-index: 1000;
+    position: relative;
+    transition: all .3s;
+    z-index: 1000;  
     
     ul{
         position: absolute;
         right: 0;
         z-index: 1000;
-        width: 150px;
+        background-color: white;
+        width: 150px;        
+    }
+
+    ul li{
+        text-align: right;
+        padding: .3rem .5rem .3rem 1rem;
+        cursor: pointer;
+        transition: all .15s;
+
+        &:hover:not(.sortActive){
+            box-shadow: 1px 0px 1px #020d14;
+        }
     }
 }
 
