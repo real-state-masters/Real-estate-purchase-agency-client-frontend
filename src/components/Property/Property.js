@@ -6,6 +6,7 @@ import {ReactComponent as SquareFeets} from '../../assets/squareFeets.svg'
 import {ReactComponent as Phone} from '../../assets/phone.svg'
 import {ReactComponent as Email} from '../../assets/email.svg'
 import {ReactComponent as HeartEmpty} from '../../assets/heart-empty.svg'
+import {ReactComponent as HeartRed} from '../../assets/heart-red.svg'
 import {ReactComponent as Trash} from '../../assets/trash.svg'
 import {ReactComponent as LeftArrow} from '../../assets/left-arrow.svg'
 import {ReactComponent as RightArrow} from '../../assets/right-arrow.svg'
@@ -23,20 +24,29 @@ const formatter = new Intl.NumberFormat('en-US', {
 
 
 
-
-  
   const Property = ({house}) => {
+    //display/hide arrows
     const [arrows, setArrows] = React.useState(false)
     let opacity = "0";
     arrows ? opacity = 1 : opacity = 0
-      
+
+    //image slider settings
+    let [current, setCurrent] = React.useState(0);
+    let photo = house.imgs[current]
+
+   
+    // Adjust phone number format
     let tel = Array.from(String(house.tel), Number)
-    const phone = tel.forEach(function(item, index) {
+    tel.forEach(function(item, index) {
         if(index === 2 || index === 5){
             tel.splice(index, 1, item + ' ')
         } 
     })
     tel = tel.join('')
+
+    // favorite
+    const [favorite, setFavorite] = React.useState(false)
+    
     
 
 
@@ -49,14 +59,19 @@ const formatter = new Intl.NumberFormat('en-US', {
         }}>
             <div className="img-container">                
                 <div className="arrows-container" style={{ opacity: opacity }}>
-                    <LeftArrow />
-                    <RightArrow />
+                    {
+                        current > 0 && <LeftArrow onClick={() => setCurrent(current = current - 1)}/>
+                    }
+
+                    {
+                        current < house.imgs.length - 1 && <RightArrow onClick={() => setCurrent(current = current + 1)}/>
+                    }
                 </div>
                 <div class="camera-container">
                     <Camera />
-                    <span>1/5</span>
+                    <span>{current + 1}/{house.imgs.length}</span>
                 </div>
-                <img class="img" src={house.imgs[0]} alt=""/>
+                <img class="img" src={photo} alt=""/>
             </div>
             <div className="address">
                 <h3>{house.address}</h3>
@@ -95,7 +110,15 @@ const formatter = new Intl.NumberFormat('en-US', {
                 </div>
                 
                 <div>
-                    <HeartEmpty />
+                    {
+                        favorite 
+                        ?
+                        <HeartRed className="heart" onClick={() => setFavorite(false)}/>
+                        :
+                        <HeartEmpty className="heart" onClick={() => setFavorite(true)}/>
+
+                    }
+                    
                     <Trash />
                 </div>
             </div>    
