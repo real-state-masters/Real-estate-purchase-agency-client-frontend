@@ -26,6 +26,9 @@ const formatter = new Intl.NumberFormat('en-US', {
 
   
   const Property = ({house}) => {
+    const [arrows, setArrows] = React.useState(false)
+    let opacity = "0";
+    arrows ? opacity = 1 : opacity = 0
       
     let tel = Array.from(String(house.tel), Number)
     const phone = tel.forEach(function(item, index) {
@@ -38,10 +41,17 @@ const formatter = new Intl.NumberFormat('en-US', {
 
 
     return (
-        <div className="property">
-            <div className="img-container">
-                <LeftArrow />
-                <RightArrow />
+        <div className="property" onMouseEnter={e => {
+            setArrows(true);
+        }}
+        onMouseLeave={e => {
+            setArrows(false)
+        }}>
+            <div className="img-container">                
+                <div className="arrows-container" style={{ opacity: opacity }}>
+                    <LeftArrow />
+                    <RightArrow />
+                </div>
                 <div class="camera-container">
                     <Camera />
                     <span>1/5</span>
