@@ -13,15 +13,6 @@ import {ReactComponent as RightArrow} from '../../assets/right-arrow.svg'
 import {ReactComponent as Camera} from '../../assets/camera.svg'
 
 
-const formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
-    // These options are needed to round to whole numbers if that's what you want.
-    //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
-    //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
-  });
-
 
 
   const Property = ({house}) => {
@@ -44,13 +35,30 @@ const formatter = new Intl.NumberFormat('en-US', {
     })
     tel = tel.join('')
 
-    // favorite
+    // Adjust currency format
+    const formatter = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 0,
+        // These options are needed to round to whole numbers if that's what you want.
+        //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+        //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+      });
+
+    // Favorite
     const [favorite, setFavorite] = React.useState(false)
     
-    
-
+    // Trash hide property
+    const[trash, setTrash] = React.useState(false)
+    function handleTrash(){
+        setTrash(true);
+    }
 
     return (
+        <>
+        {
+        !trash
+        &&
         <div className="property" onMouseEnter={e => {
             setArrows(true);
         }}
@@ -119,10 +127,12 @@ const formatter = new Intl.NumberFormat('en-US', {
 
                     }
                     
-                    <Trash />
+                     <Trash onClick={() => handleTrash()}/>
                 </div>
             </div>    
         </div>
+        }
+        </>
     )
 }
 
