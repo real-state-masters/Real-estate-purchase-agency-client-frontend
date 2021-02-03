@@ -1,0 +1,135 @@
+
+//Price Display
+.price-display{
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 1rem;
+
+    p{
+        margin-bottom: 0;
+        width: 45%;
+        text-align: center;
+        border: 1px solid #CED4DA;
+        border-radius: 4px;
+        padding: 8px 0;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 118.1%;
+        /* identical to box height, or 17px */
+
+        letter-spacing: -0.02em;
+
+        color: #000000;
+    }
+
+    span{
+        margin: 0 10px;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 118.1%;
+        /* identical to box height, or 17px */
+
+        letter-spacing: -0.02em;
+
+        color: #000000;
+    }
+}
+
+
+
+
+
+
+.multi-range-slider{
+    position: relative;
+}
+
+// Slider
+.slider{
+    position: relative;
+    height: 10px;
+    background-color: grey;
+    border-radius: 5px;
+}
+
+
+// Slider Track
+.slider > .track{
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    border-radius: 5px;
+    background-color: #DBDBDB;
+
+}
+
+
+// Slider range
+.slider > .range{
+    position: absolute;
+    z-index: 2;
+    left: 10%;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    bottom: 0;
+    border-radius: 5px;
+    background-color: rgba(5, 189, 237, .73);
+    height: 5px;
+}
+
+// Slider thumb
+.slider > .thumb{
+    position: absolute;
+    z-index: 3;
+    width:18px;
+    height: 18px;
+    background-color: #05BDED;
+    border-radius: 50%;
+}
+
+.slider > .thumb.left{
+    left: 10%;
+    transform: translate(-8px, -5px);
+}
+
+.slider > .thumb.right{
+    right: 10%;
+    transform: translate(8px, -5px);
+}
+
+
+
+// Position actual input range
+input[type=range]{
+    position: absolute;
+    -webkit-appearance: none;
+    z-index: 20;
+    height: 10px;
+    width: 100%;
+    top: 0px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+
+input[type=range]::-webkit-slider-thumb{
+    pointer-events: all;
+    width: 25px;
+    height: 20px;
+    border-radius: 0;
+    border: 0 none;
+    background-color: red;
+    -webkit-appearance: none;
+}
+

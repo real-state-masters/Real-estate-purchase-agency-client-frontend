@@ -1,0 +1,58 @@
+.form-container{
+    width: 94%;
+    margin: 0 auto;
+}
+
+.form-section{
+    margin-bottom: 1.7rem;
+}
+
+
+.type-filter{
+    display: flex;
+    margin-bottom: 1rem;
+
+    input, label{
+        margin-bottom: 12px;
+    }
+}
+
+
+
+.equiment-filter{
+    display: flex;
+
+    input, label{
+        margin-bottom: 12px;
+    }
+}
+
+.form-group {
+    margin-bottom: 0rem !important;
+}
+
+
+form{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #748690;
+
+    h6{
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+    }
+}
+
+.bedrooms-filter{
+    display: flex;
+
+    button:not(:first-child){
+        margin-left: 8px;
+    }
+}

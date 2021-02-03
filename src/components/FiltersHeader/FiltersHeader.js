@@ -1,6 +1,6 @@
 import React from 'react'
 import './FiltersHeader.scss'
-import {ReactComponent as Close} from '../../assets/close.svg'
+
 
 const FiltersHeader = () => {
     return (
