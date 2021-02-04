@@ -15,7 +15,7 @@ import {ReactComponent as Camera} from '../../assets/camera.svg'
 
 
 
-  const Property = ({house}) => {
+  const Property = ({house, active}) => {
     //display/hide arrows
     const [arrows, setArrows] = React.useState(false)
     let opacity = "0";
@@ -59,7 +59,7 @@ import {ReactComponent as Camera} from '../../assets/camera.svg'
         {
         !trash
         &&
-        <div className="property" onMouseEnter={e => {
+        <div className={`${active} property`} onMouseEnter={e => {
             setArrows(true);
         }}
         onMouseLeave={e => {
