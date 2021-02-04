@@ -56,3 +56,13 @@ form{
         margin-left: 12px;
     }
 }
+
+
+.btn-center{
+    display: flex;
+    justify-content: center;
+
+    button{
+        margin-top: 0px;
+    }
+}

@@ -46,11 +46,11 @@ const PriceSlider = () => {
             <span>-</span>
             <p className="max">{formatter.format(rightRange)}</p>
         </div> 
-        <div className="middle">
-            <div className="multi-range-slider">
+        <div className="middle form-section">
+            <div className="multi-range-slider mb-4">
                 <input type="range" id="input-left" min="0" max="1000000" value={leftRange} onChange={handleLeftThumb}/>
                 <input type="range" id="input-right" min="0" max="1000000" value={rightRange} onChange={handleRightThumb}/>
-                <div className="slider">
+                <div className="slider ">
                     <div className="track"></div>
                     <div className="range"></div>
                     <div className="thumb left"></div>

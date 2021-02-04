@@ -5,6 +5,8 @@ import {ReactComponent as Bedrooms} from '../../assets/bedrooms.svg'
 import {ReactComponent as Bathrooms} from '../../assets/bathrooms.svg'
 import ButtonOptions from '../Inputs/ButtonOptions'
 import PriceSlider from '../Inputs/PriceSlider'
+import {Button} from 'react-bootstrap'
+import PublicationDateFilter from '../Inputs/PublicationDateFilter'
 
 const AllFilters = () => {
 
@@ -14,7 +16,7 @@ const AllFilters = () => {
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} className="form-container">
+            <form onSubmit={handleSubmit} className="form-container mt-3">
                 <h6>Type of Home</h6>
                 <div className="type-filter">
                     <div className="form-group mr-4">
@@ -65,6 +67,28 @@ const AllFilters = () => {
                 <h6>Price Range</h6>
                 <PriceSlider />
 
+                <h6>Publication Date</h6>
+                <PublicationDateFilter />
+
+
+                <h6>More Filters</h6>
+                <div className="form-section equiment-filter">
+                    <div className="form-group mr-4 ">
+                        <Input name="pets-allowed" id="pets-allowed" className="input-checkbox" type="checkbox" label="Pets Allowed"/>                        
+                        <Input name="air-conditioning" id="air-conditioning" className="input-checkbox" type="checkbox" label="Air Conditioning"/>
+                        <Input name="terrace" id="terrace" className="input-checkbox" type="checkbox" label="Terrace"/>
+                    </div> 
+                    <div className="form-group">
+                        <Input name="lift" id="lift" className="input-checkbox" type="checkbox" label="Lift"/>
+                        <Input name="swimming-pool" id="swimming-pool" className="input-checkbox" type="checkbox" label="Swimming Pool"/>
+                    </div>    
+                    <div className="form-group">
+                        <Input name="garden" id="garden" className="input-checkbox" type="checkbox" label="Garden"/>
+                    </div>                     
+                </div>
+                <div className="btn-center">
+                    <Button className="btn" variant="primary">Show Results</Button>
+                </div>
             </form>
         </div>
     )
