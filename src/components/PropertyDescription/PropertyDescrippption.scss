@@ -1,0 +1,42 @@
+.description{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: .85rem;
+    line-height: 16px;
+    margin-top: 1.1rem;
+    color: #748690;
+    position: relative;
+}
+
+.sanfona-container{
+    transform: translateY(-88%);
+    transition: all .2s;
+}
+
+.sanfona-container-active{
+    transform: translateY(0);
+    transition: all .2s;
+}
+
+.hiddenDesc{
+    opacity: 0;
+    pointer-events: none;
+    transition: all .1s;
+}
+
+.showDesc{
+    opacity: 1;
+    transition: all .5s;
+}
+
+.seeDesc{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.2rem;
+    cursor: pointer;
+    color: #000000;
+    transition: all .5s;
+}
