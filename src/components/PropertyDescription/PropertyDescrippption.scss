@@ -4,30 +4,28 @@
     font-weight: 500;
     font-size: .85rem;
     line-height: 16px;
-    margin-top: 1.1rem;
     color: #748690;
     position: relative;
 }
 
 .sanfona-container{
-    transform: translateY(-88%);
-    transition: all .2s;
+    max-height: 0;
 }
 
-.sanfona-container-active{
-    transform: translateY(0);
-    transition: all .2s;
-}
+
 
 .hiddenDesc{
     opacity: 0;
+    max-height: 0;
     pointer-events: none;
-    transition: all .1s;
+    transition: all .2s;
 }
 
 .showDesc{
     opacity: 1;
-    transition: all .5s;
+    height: auto;
+    max-height: 8000px;
+    transition: all .9s;
 }
 
 .seeDesc{
@@ -39,4 +37,26 @@
     cursor: pointer;
     color: #000000;
     transition: all .5s;
+}
+
+.main-features-container{
+    h6{
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 118.1%;
+        letter-spacing: -0.04em;
+        color: #000000;
+    }
+
+    svg{
+        transform: rotate(-90deg)
+    }
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+
 }

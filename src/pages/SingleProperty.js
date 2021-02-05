@@ -2,7 +2,7 @@ import React from 'react'
 import HeaderSearch from '../components/HeaderSearch/HeaderSearch'
 import Property from '../components/Property/Property'
 import PropertyDescription from '../components/PropertyDescription/PropertyDescription'
-
+import './SingleProperty.scss'
 const SingleProperty = () => {
     const house =   {   
         id: 1,
@@ -29,7 +29,8 @@ const SingleProperty = () => {
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
                       do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
                       Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-                      laboris nisi ut aliquip ex ea commodo consequat.`
+                      laboris nisi ut aliquip ex ea commodo consequat.`,
+        features: ['67m2', 'T2', '1 bathroom', 'Good condition', 'Built in 2017']
 }
 
 
@@ -37,8 +38,10 @@ const SingleProperty = () => {
     return (
         <>
             <HeaderSearch />
-            <Property house={house}/>
-            <PropertyDescription description={house}/>
+            <div className="single-property-info-container">
+                <Property house={house}/>
+            </div>
+            <PropertyDescription description={house.description} features={house.features}/>
         </>
     )
 }
