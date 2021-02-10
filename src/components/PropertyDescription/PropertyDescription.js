@@ -3,7 +3,7 @@ import './PropertyDescrippption.scss'
 import {ReactComponent as Arrow} from '../../assets/down-arrow.svg'
 import {Button} from 'react-bootstrap'
 
-const PropertyDescription = ({description, features}) => {
+const PropertyDescription = ({description, house}) => {
     let shortDescription = description.split(' ').filter((item, index) => item !== "" && index < 105).join(' ');
     let restDescription = description.split(' ').filter((item, index) => item !== "" && index > 105).join(' ');
 
@@ -19,10 +19,8 @@ const PropertyDescription = ({description, features}) => {
                         <p className="seeDesc" onClick={() => setActiveDesc(!activeDesc)}>See full description</p>
                         <div className="main-features-container">
                             <h6>Main Features</h6>
-                            <ul>
-                                {features.map((item) => (
-                                    <li key={item} className="mb-2"><Arrow /> {item}</li>
-                                ))}
+                            <ul>                                
+                                <li className="mb-2"><Arrow /> {house.num_rooms} rooms</li>
                             </ul>
                         </div>
                         <div className="btn-container">

@@ -6,30 +6,39 @@ import './Map.scss'
 import Property from '../Property/Property'
 
 
-
-
-
-
-
-
-
 const Map = () => {
 
 
-    const house =   {   
-            id: 1,
-            imgs: ['https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-                   'https://images.unsplash.com/photo-1571939228382-b2f2b585ce15?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80'
-                  ],
-            address: '382 W King Edward Ave',
-            district: 'Shaughnessy',
-            region: 'BC',
-            price: 457000,
-            rooms: 2,
-            bathrooms: 1,
-            dimension: 67,
-            tel: 999000111
-    }
+
+    const house = {
+    air_condition: false,
+    area: 232,
+    bought_by: "3423423",
+    building_use: 2,
+    condition: 0,
+    contact: "assembler@assembler.org",
+    created_at: "2021-02-09 15:07:20",
+    description: "asfasdfsfd",
+    equipment: 0,
+    garden: false,
+    images: ["hello"],
+    lift: true,
+    location: {id: 124234234, coordinates: Array(2), address: "Calle de las Hileras, 13-1, 28013 Madrid", context: Array(0), property_id: 3},
+    num_bathrooms: 2,
+    num_rooms: 3,
+    pets: true,
+    price: 99999993,
+    status: true,
+    swimming_pool: true,
+    terrace: false,
+    title: "The best one",
+    type: "duplex",
+    type_house: 0,
+    id: "16128832406022a528c876c"
+}
+
+
+    
     
     
     const [houseSelected, setHouseSelected] = React.useState(false);
