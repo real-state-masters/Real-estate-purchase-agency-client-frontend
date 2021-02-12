@@ -8,22 +8,33 @@ import {fetchResults} from '../store/searchResults'
 
 const Home = () => {
     
-    // const [currentPage, setCurrentPage] = React.useState(1)
-    // const [postsPerPage, setPostsPerPage] = React.useState(10)
+    const state = useSelector(state => state)
+    const dispatch = useDispatch();
+    const [houses, setHouses] = React.useState([]);
 
-    
-    
-    // // Get current posts
-    // const indexOfLastPost = currentPage * postsPerPage;
-    // const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    // const currentPost = posts.slice(indexOfFirstPost, indexOfLastPost);
+
+
+    React.useEffect(() =>{
+        const fetchRes = async () => {
+         const res = await dispatch(fetchResults())
+         console.log(res)
+         if(state.login.logged){
+             setHouses(res.payload.data);
+         } else{
+            setHouses(res.payload.data.data);
+         }
+        }
+        fetchRes();
+     }, [dispatch, state.login.logged])
+
 
     return (
         <>            
            <Header />
            <SearchArea />
            <MixTitle bold="Newest properties" light="in the last 24h"/>
-           <Properties />
+            {state.results.loading && <p>Carregando...</p>}
+            {houses && <Properties houses={houses} />}
 
         </>
     )

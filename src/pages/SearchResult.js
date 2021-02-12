@@ -7,25 +7,32 @@ import {useSelector, useDispatch} from 'react-redux'
 import { useParams } from 'react-router-dom'
 
 const SearchResult = () => {
-
+    const state = useSelector(state => state)
     const {loading, error, data} = useSelector(state => state.resultsByLocation)
     const dispatch = useDispatch();
 
+    const [houses, setHouses] = React.useState('');
+
     const location = useParams();
-    console.log(location.location);
 
     React.useEffect(() =>{
        const fetchResByLocation = async () =>{
-           dispatch(fetchResultsByLocation(location.location));
-       }
+           const res = await dispatch(fetchResultsByLocation(location.location));
+           if(state.login.logged){
+                setHouses(res.payload.data);
+            } else{
+                setHouses(res.payload.data.data);
+            }
+        }
        fetchResByLocation();
-    }, [dispatch, location])
+    }, [dispatch, location, state.login.logged])
 
     return (
         <>
            <HeaderSearch />  
-           <FilterArea />        
-           <Properties />
+           <FilterArea />
+           {loading && <p>Carregando...</p>}        
+           {houses && <Properties houses={houses}/>}
         </>
     )
 }

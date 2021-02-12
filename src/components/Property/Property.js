@@ -11,13 +11,14 @@ import {ReactComponent as LeftArrow} from '../../assets/left-arrow.svg'
 import {ReactComponent as RightArrow} from '../../assets/right-arrow.svg'
 import {ReactComponent as Camera} from '../../assets/camera.svg'
 import {Link, useParams} from 'react-router-dom'
+import {useSelector} from 'react-redux'
 
 
 
   const Property = ({house, active}) => {
 
     const params = useParams();
-    
+    const logged = useSelector(state => state.login.logged)
 
     //display/hide arrows
     const [arrows, setArrows] = React.useState(false)
@@ -28,7 +29,8 @@ import {Link, useParams} from 'react-router-dom'
     let [current, setCurrent] = React.useState(0);
     let photo;
     if(house.images !== null){
-        photo = house.images[current]
+        photo = `https://real-state-admin.herokuapp.com/storage/${house.images[current]}`
+        //photo = house.images[current];
     }
 
    
@@ -52,12 +54,59 @@ import {Link, useParams} from 'react-router-dom'
       });
 
     // Favorite
-    const [favorite, setFavorite] = React.useState(false)
+    const [favorite, setFavorite] = React.useState(house.fav)
     
     // Trash hide property
     const[trash, setTrash] = React.useState(false)
     function handleTrash(){
         setTrash(true);
+        if(logged){
+            fetch('https://real-estate-client-api.herokuapp.com/unseen', {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json',
+                    'Authorization': 'Bearer ' + localStorage.getItem('token')
+                },
+                body: JSON.stringify({id: house._id})
+            })
+             .then(r => r.json())
+             .then(res => console.log(res))
+             .catch(err => console.log(err))
+        }
+    }
+
+
+    function handleFavorite(e){
+        if(logged){
+            if(e.target.classList.contains('heart-empty')){
+                console.log('add to favorites')
+                fetch('https://real-estate-client-api.herokuapp.com/favorites', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type':'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    },
+                    body: JSON.stringify({id: house._id})
+                })
+                 .then(r => r.json())
+                 .then(res => console.log(res))
+                 .catch(err => console.log(err))
+    
+            } else{
+                fetch('https://real-estate-client-api.herokuapp.com/favorites/'+house._id, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type':'application/json',
+                        'Authorization': 'Bearer ' + localStorage.getItem('token')
+                    }, 
+                })
+                .then(r => r.json())
+                 .then(res => console.log(res))
+                 .catch(err => console.log(err))
+            }
+        }else{
+            console.log('please login')
+        }
     }
 
     return (
@@ -87,9 +136,8 @@ import {Link, useParams} from 'react-router-dom'
                         <Camera />
                         <span>{current + 1}/{house.images.length}</span>
                     </div>
-                    <img className="img" src={photo} alt=""/>                    
-                    {/* <img className="img" src="https://images.unsplash.com/photo-1527169809256-51bcc03eef15?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80" alt=""/> */}
-                             
+                    {/* <img className="img" src={photo} alt=""/>   */}
+                    <img className="img" src='' alt=""/>                                          
             </div>
             <div className="address content-container">
             {
@@ -136,14 +184,13 @@ import {Link, useParams} from 'react-router-dom'
                     </div> */}
                 </div>
                 
-                <div>
+                <div onClick={handleFavorite}>
                     {
                         favorite 
                         ?
-                        <HeartRed className="heart" onClick={() => setFavorite(false)}/>
+                        <HeartRed className="heart heart-red" onClick={() => {logged && setFavorite(false)}}/>
                         :
-                        <HeartEmpty className="heart" onClick={() => setFavorite(true)}/>
-
+                        <HeartEmpty className="heart heart-empty" onClick={() => {logged && setFavorite(true)}}/>
                     }
                     
                      <Trash onClick={() => handleTrash()}/>

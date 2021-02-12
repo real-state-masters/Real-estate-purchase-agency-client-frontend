@@ -4,6 +4,7 @@ import './FiltersMenu.scss'
 import {ReactComponent as Filters} from '../../assets/filter.svg'
 import {ReactComponent as Map} from '../../assets/map.svg'
 import {ReactComponent as DownArrow} from '../../assets/down-arrow.svg'
+import { Link } from 'react-router-dom'
 
 const FiltersMenu = () => {
     const [sortMenu, setSortMenu] = React.useState(false);
@@ -30,7 +31,11 @@ const FiltersMenu = () => {
         </div>
         <div className="map">
             <Map />
-            <span className="ml-1">map</span>
+            <span className="ml-1">
+                <Link to="/map">
+                    map
+                </Link>
+            </span>
         </div>
         <div className="sort-by">
             <span className="sort">Sort by:</span>

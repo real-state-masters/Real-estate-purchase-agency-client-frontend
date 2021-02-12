@@ -1,46 +1,28 @@
-import { combineReducers } from '@reduxjs/toolkit';
-import createAsyncSlice from './helper/createAsyncSlice';
+// consts
+const LOGIN_USER = 'login';
 
-const token = createAsyncSlice({
-  name: 'token',
-  fetchConfig: (payload) => ({
-    url: 'https://dogsapi.origamid.dev/json/jwt-auth/v1/token',
-    options: {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    },
-  }),
-});
+// actions
+export const logUser = () => ({
+    type: LOGIN_USER
+})
 
-const user = createAsyncSlice({
-  name: 'user',
-  fetchConfig: (payload) => ({
-    url: 'https://dogsapi.origamid.dev/json/api/user',
-    options: {
-      method: 'GET',
-      headers: {
-        Authorization: 'Bearer ' + payload,
-      },
-    },
-  }),
-});
 
-const fetchToken = token.asyncAction;
-const fetchUser = user.asyncAction;
 
-export const login = (user) => async (dispatch) => {
-  try {
-    const { payload } = await dispatch(fetchToken(user)); // payload é a resposta do fetch
-    if (payload.token !== undefined) await dispatch(fetchUser(payload.token));
-  } catch {}
-};
+// Initial State
+const initialState = {
+    logged: false
+}
 
-const reducer = combineReducers({
-  user: user.reducer,
-  token: token.reducer,
-});
 
-export default reducer;
+// reducer
+export default function login(state = initialState, action) {
+    switch (action.type) {
+        case LOGIN_USER:
+            return {
+                ...state,
+                logged: true
+            }
+        default:
+            return state
+    }
+}

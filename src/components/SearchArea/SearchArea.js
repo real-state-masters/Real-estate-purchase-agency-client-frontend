@@ -7,11 +7,11 @@ import {connect, useSelector} from 'react-redux'
 import {add, sub} from '../../store/counter'
 import { Link } from 'react-router-dom'
 
-
 const SearchArea = ({counter, dispatch}) => {
     console.log(counter);
-
     const [location, setLocation] = React.useState('');
+
+
 
     return (
         <>
@@ -24,11 +24,12 @@ const SearchArea = ({counter, dispatch}) => {
                 <Form inline>
                     <Logo />
                     <FormControl type="text" value={location} onChange={({target}) => setLocation(target.value)}placeholder="Search by City or District" className="mr-sm-2 px-5" />
+                        <Button className="btn" variant="primary">
+                            <Link to={`/properties/${location}`}>
+                                Search
+                            </Link>    
+                        </Button>
                     
-                    <p>{location}</p>
-                    <Link to={`/properties/${location}`}>
-                        <Button className="btn" variant="primary">Search</Button>
-                    </Link>
                 </Form>
             </div>
         </section>

@@ -9,13 +9,12 @@ const SignUp = () => {
      // update firestore settings
     db.settings({timestampsInSnapshots:true});
 
-     const signUpFetch = function fetchFormSignUp(formData) {
+     const signUpFetch = function fetchFormSignUp(token) {
         return fetch("https://real-estate-client-api.herokuapp.com/sign-up", {
         method: "POST",
         headers: {
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+            'Authorization': `Bearer ${token}`,
         }, 
-        body: formData,
         })
         .then((response) => response.text())
         .then((data) => {
@@ -24,19 +23,12 @@ const SignUp = () => {
         .catch((error) => console.log(error));
     }
 
-    function createFormSignUp(email, firebaseUID) {
-        var formData = new FormData();
-        formData.append("email", email);
-        formData.append("firebaseUID", firebaseUID);
-        return formData;
-    }
 
     const [name, setName] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
 
 
-    //const signupForm = document.querySelector(".signup-form");
 
     function handleSubmit (e){
         e.preventDefault();
@@ -44,18 +36,12 @@ const SignUp = () => {
          auth.createUserWithEmailAndPassword(email, password)
          .then((cred) => {
              console.log(cred.user);
-             // close the signup modal & reset form
-             //const modal = document.querySelector("#modal-signup");
-             //M.Modal.getInstance(modal).close();
-             //signupForm.reset();
              return cred.user.uid;
          })
          .then((firebaseUID) => {
             auth.currentUser.getIdToken().then((token) => {
             console.log(token)
-            localStorage.setItem('token', token)
-            let formData = createFormSignUp(name, email, /*password,*/ firebaseUID, token);
-            signUpFetch(formData);
+            signUpFetch(token);
             });    
         });
 
