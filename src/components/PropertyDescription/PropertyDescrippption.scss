@@ -1,0 +1,62 @@
+.description{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: .85rem;
+    line-height: 16px;
+    color: #748690;
+    position: relative;
+}
+
+.sanfona-container{
+    max-height: 0;
+}
+
+
+
+.hiddenDesc{
+    opacity: 0;
+    max-height: 0;
+    pointer-events: none;
+    transition: all .2s;
+}
+
+.showDesc{
+    opacity: 1;
+    height: auto;
+    max-height: 8000px;
+    transition: all .9s;
+}
+
+.seeDesc{
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 1.2rem;
+    cursor: pointer;
+    color: #000000;
+    transition: all .5s;
+}
+
+.main-features-container{
+    h6{
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 118.1%;
+        letter-spacing: -0.04em;
+        color: #000000;
+    }
+
+    svg{
+        transform: rotate(-90deg)
+    }
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+
+}

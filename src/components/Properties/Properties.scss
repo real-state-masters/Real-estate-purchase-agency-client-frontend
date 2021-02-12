@@ -1,0 +1,13 @@
+.property-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 35px;
+
+    h3{
+        color: black !important;
+    }
+
+    a:hover{
+        text-decoration: none;
+    }
+}

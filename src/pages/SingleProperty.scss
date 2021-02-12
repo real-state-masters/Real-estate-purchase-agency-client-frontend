@@ -1,0 +1,16 @@
+.single-property-info-container > .property > .address, 
+.property-info, .separator, .property-info-2{
+    width: 94%;
+    margin: 0 auto;
+}
+
+.single-property-info-container > .property > .img-container{
+    img{
+        border-radius: 0px;
+    }
+}
+
+.single-property-info-container{
+    position: relative;
+    top: -.8rem;
+}
